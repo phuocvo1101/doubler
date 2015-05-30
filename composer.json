@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Libraries\\": "app/Libraries",
+            "Models\\": "app/Models",
+            "Configs\\": "app/Configs",
+            "Controllers\\": "app/Controllers"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "~6.0",
+        "smarty/smarty": "~3.1"
+    }
+}
