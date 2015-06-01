@@ -41,33 +41,64 @@
                 <thead>
                 <tr>
                     <th>Date#</th>
-                    <th>Network</th>
+                    <th>Order Number</th>
+                    <th>Programma Nome
+                    </th>
                     <th>Merchant</th>
-                    <th>Type</th>
-                    <th>Price</th>
-                    <th>Commission</th>
-                    <th>Status</th>
-                    <th>POST</th>
-                    <th>Refer</th>
-                    <th>Landing Page</th>
+                    <th>Amount
+                    </th>
+                    <th>Commission
+                    </th>
+                    <th>Programma Prepayment Status
+                    </th>
+                    <th>Time of visit
+                    </th>
+                    <th>Time In session
+                    </th>
+                    <th>Time Last modified
+                    </th>
+                    <th>Evento Nome
+                    </th>
+                    <th>Reason
+                    </th>
+                    <th>Sito Nome
+                    </th>
+                    <th>Elem Grafico Nome
+                    </th>
+
+
                 </tr>
                 </thead>
                 <tbody>
                 {if isset($reports)}
                     {foreach $reports as $key=>$item}
                         <tr>
-                            <td>{$item->Date}</td>
-                            <td>tradedoubler</td>
-                            <td>{$item->network}</td>
-                            <td>Sale</td>
-                            <td>{$item->Price}</td>
-                            <td>{$item->Commission}</td>
-                            <td>Open</td>
-                            <td>
-                                - unknown -
+                            <td>{$item->date}</td>
+                            <td>{$item->unique_id_ordernumber}</td>
+                            <td>{$item->programma_name}
                             </td>
-                            <td>Only in the premium version</td>
-                            <td>Only in the premium version</td>
+                            <td>{$item->merchantId}</td>
+                            <td>{$item->amount}
+                            </td>
+                            <td>{$item->commission}
+                            </td>
+                            <td>{$item->status}
+                            </td>
+                            <td>{$item->time_of_visit}
+                            </td>
+                            <td>{$item->time_in_session}
+                            </td>
+                            </td>
+                            <td>{$item->time_last_modified}
+                            </td>
+                            <td>{$item->evento_name}
+                            </td>
+                            <td>{$item->reason}
+                            </td>
+                            <td>{$item->site_name}
+                            </td>
+                            <td>{$item->elem_grafico_name}
+                            </td>
 
                         </tr>
                     {/foreach}

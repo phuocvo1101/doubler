@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2015-05-30 12:39:10
+<?php /* Smarty version 3.1.24, created on 2015-05-31 01:26:55
          compiled from "/var/www/workspace/tradedoubler/app/Views/report/index.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:130027906755694cfe309b41_00528419%%*/
+/*%%SmartyHeaderCode:565690908556a00efeca504_01756244%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ed39e8a9f0f3e439f5fe196980ef4d7d06dfb866' => 
     array (
       0 => '/var/www/workspace/tradedoubler/app/Views/report/index.tpl',
-      1 => 1432964346,
+      1 => 1433010408,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '130027906755694cfe309b41_00528419',
+  'nocache_hash' => '565690908556a00efeca504_01756244',
   'variables' => 
   array (
     'search' => 0,
@@ -26,13 +26,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_55694cfe42d505_79242530',
+  'unifunc' => 'content_556a00f0321125_03658377',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_55694cfe42d505_79242530')) {
-function content_55694cfe42d505_79242530 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_556a00f0321125_03658377')) {
+function content_556a00f0321125_03658377 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '130027906755694cfe309b41_00528419';
+$_smarty_tpl->properties['nocache_hash'] = '565690908556a00efeca504_01756244';
 ?>
 <?php echo '<script'; ?>
  type="text/javascript">
@@ -81,15 +81,32 @@ echo $_smarty_tpl->tpl_vars['search']->value;
                 <thead>
                 <tr>
                     <th>Date#</th>
-                    <th>Network</th>
+                    <th>Order Number</th>
+                    <th>Programma Nome
+                    </th>
                     <th>Merchant</th>
-                    <th>Type</th>
-                    <th>Price</th>
-                    <th>Commission</th>
-                    <th>Status</th>
-                    <th>POST</th>
-                    <th>Refer</th>
-                    <th>Landing Page</th>
+                    <th>Amount
+                    </th>
+                    <th>Commission
+                    </th>
+                    <th>Programma Prepayment Status
+                    </th>
+                    <th>Time of visit
+                    </th>
+                    <th>Time In session
+                    </th>
+                    <th>Time Last modified
+                    </th>
+                    <th>Evento Nome
+                    </th>
+                    <th>Reason
+                    </th>
+                    <th>Sito Nome
+                    </th>
+                    <th>Elem Grafico Nome
+                    </th>
+
+
                 </tr>
                 </thead>
                 <tbody>
@@ -107,22 +124,46 @@ $_smarty_tpl->tpl_vars['item']->_loop = true;
 $foreach_item_Sav = $_smarty_tpl->tpl_vars['item'];
 ?>
                         <tr>
-                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->Date;?>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->date;?>
 </td>
-                            <td>tradedoubler</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->network;?>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->unique_id_ordernumber;?>
 </td>
-                            <td>Sale</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->Price;?>
-</td>
-                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->Commission;?>
-</td>
-                            <td>Open</td>
-                            <td>
-                                - unknown -
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->programma_name;?>
+
                             </td>
-                            <td>Only in the premium version</td>
-                            <td>Only in the premium version</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->merchantId;?>
+</td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->amount;?>
+
+                            </td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->commission;?>
+
+                            </td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->status;?>
+
+                            </td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->time_of_visit;?>
+
+                            </td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->time_in_session;?>
+
+                            </td>
+                            </td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->time_last_modified;?>
+
+                            </td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->evento_name;?>
+
+                            </td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->reason;?>
+
+                            </td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->site_name;?>
+
+                            </td>
+                            <td><?php echo $_smarty_tpl->tpl_vars['item']->value->elem_grafico_name;?>
+
+                            </td>
 
                         </tr>
                     <?php

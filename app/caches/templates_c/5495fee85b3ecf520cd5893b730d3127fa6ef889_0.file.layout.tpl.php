@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.24, created on 2015-05-30 12:46:12
+<?php /* Smarty version 3.1.24, created on 2015-05-30 23:49:52
          compiled from "/var/www/workspace/tradedoubler/app/Views/layout.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:92909849855694ea42fa241_96231437%%*/
+/*%%SmartyHeaderCode:17480194135569ea3096a2f2_15596222%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,24 +9,24 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5495fee85b3ecf520cd5893b730d3127fa6ef889' => 
     array (
       0 => '/var/www/workspace/tradedoubler/app/Views/layout.tpl',
-      1 => 1432964770,
+      1 => 1433004177,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '92909849855694ea42fa241_96231437',
+  'nocache_hash' => '17480194135569ea3096a2f2_15596222',
   'variables' => 
   array (
     'content' => 0,
   ),
   'has_nocache_code' => false,
   'version' => '3.1.24',
-  'unifunc' => 'content_55694ea43672f8_50039043',
+  'unifunc' => 'content_5569ea30b140f7_52274669',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_55694ea43672f8_50039043')) {
-function content_55694ea43672f8_50039043 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_5569ea30b140f7_52274669')) {
+function content_5569ea30b140f7_52274669 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '92909849855694ea42fa241_96231437';
+$_smarty_tpl->properties['nocache_hash'] = '17480194135569ea3096a2f2_15596222';
 ?>
 <!DOCTYPE html>
 <html lang="en">

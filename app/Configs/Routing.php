@@ -25,7 +25,7 @@ class Routing {
                     $this->baseController = new DashBoardController();
                     break;
                 default:
-                    $this->baseController = new ReportController();
+                    $this->baseController = new DashBoardController();
                     break;
             }
             switch(strtolower($_GET['action'])) {
@@ -39,7 +39,7 @@ class Routing {
         } else {
             $_GET['controller'] = 'dashboard';
             $_GET['action'] = 'index';
-            $basecontroller = new ReportController();
+            $basecontroller = new DashBoardController();
             $this->content = $basecontroller->indexAction();
         }
 

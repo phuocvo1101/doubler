@@ -5,10 +5,14 @@
             "Models\\": "app/Models",
             "Configs\\": "app/Configs",
             "Controllers\\": "app/Controllers"
+        },
+        "psr-0" : {
+            "Oara" : "app/Libraries",
+            "Google" : "vendor/google/apiclient/src/"
         }
     },
     "require": {
-        "guzzlehttp/guzzle": "~6.0",
-        "smarty/smarty": "~3.1"
+        "smarty/smarty": "~3.1",
+        "zendframework/zendframework1": "dev-master"
     }
 }
