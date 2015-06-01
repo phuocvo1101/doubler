@@ -20,14 +20,14 @@ class ReportModel extends BaseModel {
         $arrSearch=array();
         $strLike = '';
         if(!empty($search)){
-            $strLike = ' WHERE (network like ?)';
+            $strLike = ' WHERE (`unique_id_ordernumber` like ?)';
         }
-
+//echo $search;die();
         $query="SELECT count(*) AS total FROM `transactions` "." ".$strLike.' ORDER BY `date` desc';
 
         $querylimit = "SELECT * FROM `transactions` "." ".$strLike.' ORDER BY `date` desc  LIMIT ?, ?';
         //echo $query;die();
-        if(!empty($search)) {
+        if(!empty($search)) {     
             $arrSearch[] = array('%'.$search.'%',\PDO::PARAM_STR);
         }
         $this->database->setQuery($query);
@@ -40,9 +40,10 @@ class ReportModel extends BaseModel {
         $arrSearch[] =array($start,\PDO::PARAM_INT);
         $arrSearch[] =array($limit,\PDO::PARAM_INT);
 
-
         $this->database->setQuery($querylimit);
         $result = $this->database->loadAllRows($arrSearch);
+        
+//echo '<pre>'.print_r($querylimit,true).'</pre>';die();
         return $result;
     }
 

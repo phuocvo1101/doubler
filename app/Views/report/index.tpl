@@ -7,7 +7,7 @@
         frm.submit();
     }
 </script>
-<form id="frm" action="index.php?controller=order&action=index" method="post">
+<form id="frm" action="index.php?controller=report&action=index" method="post">
 
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
@@ -45,7 +45,7 @@
                     <th>Programma Nome
                     </th>
                     <th>Merchant</th>
-                    <th>Amount
+                    <th>Price
                     </th>
                     <th>Commission
                     </th>
@@ -78,9 +78,9 @@
                             <td>{$item->programma_name}
                             </td>
                             <td>{$item->merchantId}</td>
-                            <td>{$item->amount}
+                            <td>{$item->amount} €
                             </td>
-                            <td>{$item->commission}
+                            <td>{$item->commission} €
                             </td>
                             <td>{$item->status}
                             </td>

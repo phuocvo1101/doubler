@@ -15,13 +15,14 @@ class ReportController extends BaseController implements IBaseController{
     }
     public function indexAction()
     {
+    
         if(isset($_REQUEST['search'])){
             $search=$_REQUEST['search'];
         }else{
             $search='';
         }
 
-        $totalRecord = $this->model->listReport(0,10,1);
+        $totalRecord = $this->model->listReport(0,10,1,$search);
 
         $limit = isset($_REQUEST['limit']) ?  $_REQUEST['limit'] : 10;
 
