@@ -46,8 +46,14 @@ class Pagination {
                 $listPage .= "<a href='".$this->_baseUrl."&pages=".$totalPages."&start=".$newstart."&limit=".$limit."'>Prev</a>";
             }
 
+            $cursor = $current;
 
-            for($i=1;$i<=$totalPages;$i++){
+            if($cursor<4) {
+                $cursor = $cursor+4;
+            }
+
+
+            for($i=$cursor-4;$i<=$cursor+5;$i++){
                 $newstart = ($i - 1)*$limit;
                 if($i == $current){
                     $listPage .= "<span class='current'>".$i."</span>";
