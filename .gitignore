@@ -3,3 +3,4 @@ app/caches
 app/caches/*
 composer.lock
 bin/Oara/data/curl/azzarev/TradeDoubler
+.idea/

@@ -30,10 +30,11 @@ class ReportModel extends BaseModel {
         if(!empty($search)) {     
             $arrSearch[] = array('%'.$search.'%',\PDO::PARAM_STR);
         }
-        $this->database->setQuery($query);
-        $total = $this->database->loadRow($arrSearch);
+
 
         if($count==1) {
+            $this->database->setQuery($query);
+            $total = $this->database->loadRow($arrSearch);
             return $total->total;
         }
 

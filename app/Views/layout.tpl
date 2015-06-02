@@ -49,6 +49,7 @@
             <ul class="nav nav-sidebar">
                 <li><a href="index.php?controller=dashboard&action=index"><i class="fa fa-dashboard"></i><span class="hidden-minibar">  Dashboard<span></a></li>
                 <li><a href="index.php?controller=report&action=index"><i class="fa fa-comments"></i>  Reports</a></li>
+                <li><a href="index.php?controller=product&action=index"><i class="fa fa-comments"></i>  Products</a></li>
             </ul>
         </div>
         <!-- end menuleft -->

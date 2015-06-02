@@ -4,6 +4,7 @@ namespace Configs;
 
 use Controllers\ReportController;
 use Controllers\DashBoardController;
+use Controllers\ProductController;
 class Routing {
     protected  $baseController;
     protected  $content;
@@ -20,6 +21,9 @@ class Routing {
 
                 case "report":
                     $this->baseController = new ReportController();
+                    break;
+                case "product":
+                    $this->baseController = new ProductController();
                     break;
                 case "dashboard":
                     $this->baseController = new DashBoardController();
