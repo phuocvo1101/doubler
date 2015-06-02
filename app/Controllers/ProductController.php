@@ -33,7 +33,6 @@ class ProductController extends BaseController implements IBaseController
         $limit = isset($_REQUEST['limit']) ? $_REQUEST['limit'] : 10;
         $page = ($start/$limit) + 1;
 
-
         $result = $this->model->listProduct($page, $limit, $search);
         $Pagination = new Pagination($limit, 'index.php?controller=product&action=index&search=' . $search);//,$base_url
 
