@@ -21,6 +21,9 @@ class ReportController extends BaseController implements IBaseController{
         }else{
             $search='';
         }
+        if (isset($_POST['go'])) {
+            $search = $_POST['search'] ? $_POST['search'] : '';
+        }
 
         $totalRecord = $this->model->listReport(0,10,1,$search);
 

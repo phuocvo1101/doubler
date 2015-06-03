@@ -27,5 +27,18 @@
             </div>
         </div>
 
+        <div class="col-md-4 ">
+            <div id="initial-tour" class="info-box  bg-success  text-white">
+                <div class="info-icon bg-success-dark">
+                    <span class="glyphicon glyphicon-eye-close fa-4x"></span>
+                    <span class="pull-right"><h1>{if isset($totalproduct)}{$totalproduct}{/if}</h1></span>
+                </div>
+                <div class="info-details">
+                    <h4>PRODUCTS  </h4>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

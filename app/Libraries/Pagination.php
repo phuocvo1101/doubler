@@ -43,7 +43,7 @@ class Pagination {
             $current = ($start/$limit) + 1;
             if($current != 1){
                 $newstart = $start - $limit;
-                $listPage .= "<a href='".$this->_baseUrl."&pages=".$totalPages."&start=".$newstart."&limit=".$limit."'>Prev</a>";
+                $listPage .= "<li><a href='".$this->_baseUrl."&pages=".$totalPages."&start=".$newstart."&limit=".$limit."'>Prev</a></li>";
             }
 
             $cursor = $current;
@@ -56,15 +56,15 @@ class Pagination {
             for($i=$cursor-4;$i<=$cursor+5;$i++){
                 $newstart = ($i - 1)*$limit;
                 if($i == $current){
-                    $listPage .= "<span class='current'>".$i."</span>";
+                    $listPage .= '<li class="active"><a href="#">'.$i.'<span class="sr-only">(current)</span></a></li>';
                 }else{
-                    $listPage .= "<a href='".$this->_baseUrl."&pages=".$totalPages."&start=".$newstart."&limit=".$limit."'>".$i."</a>";
+                    $listPage .= "<li><a href='".$this->_baseUrl."&pages=".$totalPages."&start=".$newstart."&limit=".$limit."'>".$i."</a></li>";
                 }
             }
 
             if($current != $totalPages){
                 $newstart = $start + $limit;
-                $listPage .= "<a href='".$this->_baseUrl."&pages=".$totalPages."&start=".$newstart."&limit=".$limit."'>Next</a>";
+                $listPage .= "<li><a href='".$this->_baseUrl."&pages=".$totalPages."&start=".$newstart."&limit=".$limit."'>Next</a></li>";
             }
         }
 

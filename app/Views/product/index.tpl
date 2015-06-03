@@ -60,7 +60,7 @@
                         <tr>
                             <td>{$item['name']}</td>
                             <td>{$item['description']}</td>
-                            <td>{$item['productImage']['url']}
+                            <td><img src="{$item['productImage']['url']}" width="150px" height="150px"/>
                             </td>
                             <td>{foreach $item['categories'] as $key=>$cate}
                                 <span>{$cate['name']}</span>
@@ -97,6 +97,7 @@
                         <ul class="pagination" align="center">
 
                             {if isset($listPage)}
+
                                 <li>{$listPage}</li>
                             {/if}
                         </ul>
