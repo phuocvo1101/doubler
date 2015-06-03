@@ -52,6 +52,10 @@ class Pagination {
                 $cursor = $cursor+4;
             }
 
+            if($cursor==4) {
+                $cursor = $cursor + 1;
+            }
+
 
             for($i=$cursor-4;$i<=$cursor+5;$i++){
                 $newstart = ($i - 1)*$limit;
