@@ -33,8 +33,11 @@
 <section id="container" >
 <!--header start-->
 <header class="header white-bg">
+ <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+ </div>
 <!--logo start-->
-<a href="index.html" class="logo">Toggle <span>navigation</span></a>
+<a href="index.php?controller=dashboard&action=index" class="logo">Toggle <span>navigation</span></a>
 <!--logo end-->
 
 <div class="top-nav ">
