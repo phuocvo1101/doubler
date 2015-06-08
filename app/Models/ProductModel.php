@@ -2,6 +2,7 @@
 namespace Models;
 
 use GuzzleHttp\Client;
+
 class ProductModel extends BaseModel
 {
     public function __construct()
@@ -12,6 +13,7 @@ class ProductModel extends BaseModel
     {
         $arrSearch=array();
         $result = array();
+
         $client = new Client([]);
         $strsearch="";
         if($search != ""){
