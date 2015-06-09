@@ -20,17 +20,25 @@ class Database extends \PDO {
 
     public function __construct()
     {
-        $this->_dbh =  new parent('mysql:host='.$this->host.';dbname='.$this->db, $this->user, $this->pass);
+        parent::__construct('mysql:host='.$this->host.';dbname='.$this->db, $this->user, $this->pass);
+        $this->_dbh =  new \PDO('mysql:host='.$this->host.';dbname='.$this->db, $this->user, $this->pass);
         $this->_dbh->query('set name "utf8"');
     }
+
 
     //thiet lap cau lenh truy van
     public function setQuery($sql)
     {
         $this->_sql = $sql;
     }
+
+    public function execquery()
+    {
+        return $this->exec($this->_sql);
+    }
+
     //thuc thi cau lenh truy van
-    public function execute($options=array())
+    public function execute($options=array(),$excute=0)
     {
 
         $this->_cursor = $this->_dbh->prepare($this->_sql);
@@ -40,7 +48,11 @@ class Database extends \PDO {
             }
         }
 
-        $this->_cursor->execute();
+        $result = $this->_cursor->execute();
+        if($excute==1) {
+            return $result;
+        }
+
         return $this->_cursor;
     }
     //lay gia tri trong bang va gan vao mang doi tuong
