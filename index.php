@@ -32,6 +32,7 @@ $smarty->assign('PATH_JS',PATH_JS);
 $smarty->assign('PATH_IMAGES',PATH_IMAGES);
 if(isset($_SESSION['username'])) {
     $smarty->assign('user',$_SESSION['username']);
+    $smarty->assign('type',$_SESSION['type']);
 }
 $smarty->assign('content',$content);
 $smarty->display($layout);

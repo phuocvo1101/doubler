@@ -27,15 +27,18 @@ class UserController extends  BaseController
 
 
         $limit = isset($_REQUEST['limit']) ? $_REQUEST['limit'] : 10;
-
-        $result = $this->model->listUser($start,$limit,1);
+        $account_id = isset($_REQUEST['account_id']) ? $_REQUEST['account_id'] : null;
+        if(isset($_SESSION['type']) && $_SESSION['type']!='admin') {
+            $account_id = $_SESSION['account_id'];
+        }
+        $result = $this->model->listUser($start,$limit,1,$account_id);
 
         $pagination = new Pagination($limit, 'index.php?controller=user&action=index');//,$base_url
 
         $totalRecord = $result->total;
         $totalPages = $pagination->totalPages($totalRecord);
         $listPage = $pagination->listPages($totalPages);
-        $users = $this->model->listUser($start,$limit);
+        $users = $this->model->listUser($start,$limit,0,$account_id);
 
         $this->template->assign('limit', $limit);
         $this->template->assign('start', $start);
@@ -135,7 +138,13 @@ class UserController extends  BaseController
     public function createAction()
     {
         $accountModel = new AccountModel();
-        $listAccount = $accountModel->getAllAccount();
+
+        $account_id = isset($_REQUEST['account_id']) ? $_REQUEST['account_id'] : null;
+        if(isset($_SESSION['type']) && $_SESSION['type']!='admin') {
+            $account_id = $_SESSION['account_id'];
+        }
+
+        $listAccount = $accountModel->getAllAccount($account_id);
         $this->template->assign('listAccount',$listAccount);
         if(isset($_POST['subFormUser'])) {
             $message = '';
@@ -282,7 +291,8 @@ class UserController extends  BaseController
             $_SESSION['fullname'] = $result->fullname;
             $_SESSION['email'] = $result->email;
             $_SESSION['user_id'] = $result->id;
-
+            $_SESSION['type'] = $result->type;
+            $_SESSION['account_id'] = $result->account_id;
             $this->redirect();
         }
         return $this->template->fetch('user/login.tpl');

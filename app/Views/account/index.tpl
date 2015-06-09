@@ -47,7 +47,7 @@
                                                     {/if}
                                                 </td>
                                                 <td>
-                                                    <button type="button" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View </button>
+                                                    <button type="button" onclick="window.location='index.php?controller=user&action=index&account_id={$item->id}'" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> View </button>
                                                 </td>
                                                 <td>{$item->created_day|date_format:"%Y-%m-%d %H:%M:%S"}
                                                 </td>

@@ -93,7 +93,10 @@
                     <span>Accounts &amp; Users</span>
                     <span class="dcjq-icon"></span></a>
                 <ul class="sub" style="overflow: hidden; display: block;">
-                    <li><a href="index.php?controller=account&action=index">Accounts List</a></li>
+                    {if !empty($type) && $type=='admin'}
+                        <li><a href="index.php?controller=account&action=index">Accounts List</a></li>
+                    {/if}
+
                     <li><a href="index.php?controller=user&action=index">Users List</a></li>
 
                 </ul>

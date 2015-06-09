@@ -16,20 +16,28 @@ class UserModel extends BaseModel
         parent::__construct();
     }
 
-    public function listUser($start, $limit,$count=0)
+    public function listUser($start, $limit,$count=0, $account_id=null)
     {
-        $sql = 'SELECT COUNT(*) AS total FROM users';
+        $data = array();
+        $strAccount = '';
+
+        if($account_id!=null) {
+            $strAccount = 'WHERE u.account_id=? ';
+            $data[] =array((int)$account_id,\PDO::PARAM_INT);
+        }
+        $sql = 'SELECT COUNT(*) AS total FROM users AS u '.$strAccount;
+
         if($count==1) {
             $this->database->setQuery($sql);
-            return $this->database->loadRow();
+            return $this->database->loadRow($data);
         }
+
         $sql = 'SELECT u.*,a.name as account_name FROM `users` u
-                LEFT JOIN `accounts` a ON u.account_id=a.id
+                LEFT JOIN `accounts` a ON u.account_id=a.id '.$strAccount.'
                 ORDER BY `username` asc LIMIT ?,?';
-        $data = array(
-            array((int)$start,\PDO::PARAM_INT),
-            array((int)$limit,\PDO::PARAM_INT)
-        );
+
+        $data[] = array((int)$start,\PDO::PARAM_INT);
+        $data[] =  array((int)$limit,\PDO::PARAM_INT);
         $this->database->setQuery($sql);
         $result = $this->database->loadAllRows($data);
         return $result;
@@ -169,7 +177,9 @@ class UserModel extends BaseModel
             return false;
         }
 
-        $sql = 'SELECT * FROM `users` WHERE `username`=? AND `password` = ?';
+        $sql = 'SELECT u.*,a.type,a.id as account_id FROM `users` AS u
+              INNER JOIN `accounts` AS a ON u.account_id=a.id
+              WHERE u.status=1 AND a.status=1 AND `username`=? AND `password` = ?';
 
         $this->database->setQuery($sql);
         $data = array(

@@ -33,12 +33,18 @@ class AccountModel extends BaseModel
         return $result;
     }
 
-    public function getAllAccount()
+    public function getAllAccount($account_id=null)
     {
-        $sql = 'SELECT * FROM accounts ORDER BY `name` asc';
+        $strAccount = '';
+        $data = array();
+        if($account_id!=null) {
+            $strAccount = 'WHERE id=? ';
+            $data[] =array((int)$account_id,\PDO::PARAM_INT);
+        }
+        $sql = 'SELECT * FROM accounts '.$strAccount.' ORDER BY `name` asc';
 
         $this->database->setQuery($sql);
-        $result = $this->database->loadAllRows();
+        $result = $this->database->loadAllRows($data);
         return $result;
     }
 
