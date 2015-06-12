@@ -53,7 +53,7 @@ class ReportModel extends BaseModel {
         foreach($transations as $item) {
             $query = 'INSERT INTO `transactions`(merchantId,date,unique_id_ordernumber,programma_name,programa_prepayment_status,
                       time_of_visit,time_in_session,time_last_modified,evento_name,reason,site_name,elem_grafico_name,status,
-                      amount,commission,custom_id) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+                      amount,commission,custom_id,epi) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
             $arrData = array(
                 array($item['merchantId'],\PDO::PARAM_INT),
                 array($item['date'],\PDO::PARAM_STR),
@@ -70,7 +70,8 @@ class ReportModel extends BaseModel {
                 array($item['status'],\PDO::PARAM_STR),
                 array($item['amount'],\PDO::PARAM_STR),
                 array($item['commission'],\PDO::PARAM_STR),
-                array($item['custom_id'],\PDO::PARAM_STR)
+                array($item['custom_id'],\PDO::PARAM_STR),
+                array($item['epi'],\PDO::PARAM_STR)
             );
             $this->database->setQuery($query);
             $this->database->execute($arrData);
