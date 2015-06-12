@@ -47,6 +47,7 @@ class ProductController extends BaseController implements IBaseController
         $this->template->assign('totalrecords', $totalRecord);
         $this->template->assign('totalpages', $totalPages);
         $this->template->assign('listPage', $listPage);
+        $this->template->assign('userid',$_SESSION['user_id']);
         return $this->template->fetch('product/index.tpl');
     }
 }

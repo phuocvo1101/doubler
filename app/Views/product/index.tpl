@@ -65,7 +65,9 @@
                                                     {/foreach}
                                                 </td>
                                                 {foreach $item['offers'] as $key=>$off}
-                                                    <td><a target="_blank" href="{$off['productUrl']}">Product Links</a>
+                                                    {assign var=arrurl value="?"|explode:$off['productUrl']}
+                                                    {assign var=url value=$arrurl[0]|cat:'?epi('|cat:$userid|cat:')'|cat:$arrurl[1]}
+                                                    <td><a target="_blank" href="{$url}">Product Links</a>
                                                     </td>
                                                     <td>{$off['programName']}</td>
                                                     <td>{foreach $off['priceHistory'] as $key=>$price}
