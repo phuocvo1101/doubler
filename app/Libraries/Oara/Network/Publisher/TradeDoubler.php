@@ -366,7 +366,6 @@ class Oara_Network_Publisher_TradeDoubler extends Oara_Network {
 		for ($i = 2; $i < $num - 1; $i++) {
 
 			$transactionExportArray = str_getcsv($exportData[$i], ",");
-
 			if (!isset($transactionExportArray[2])) {
 				throw new Exception('Problem getting transaction\n\n');
 			}
@@ -390,7 +389,7 @@ class Oara_Network_Publisher_TradeDoubler extends Oara_Network {
 				} else {
 					throw new Exception("No Identifier");
 				}
-				
+                $transaction['epi'] = $transactionExportArray[9];
 				$transaction['programma_name'] = $transactionExportArray[0];
 				$transaction['programa_prepayment_status'] = $transactionExportArray[1];
 
