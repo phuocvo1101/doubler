@@ -39,7 +39,6 @@ class ProductController extends BaseController implements IBaseController
         $totalRecord = $result['total'];
         $totalPages = $Pagination->totalPages($totalRecord);
         $listPage = $Pagination->listPages($totalPages);
-
         $this->template->assign('products', $result['products']);
         $this->template->assign('search', $search);
         $this->template->assign('limit', $limit);

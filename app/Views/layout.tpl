@@ -118,6 +118,12 @@
                     <span>Products</span>
                 </a>
             </li>
+            <li>
+                <a href="index.php?controller=program&action=index">
+                    <i class="fa fa-tasks"></i>
+                    <span>Programs</span>
+                </a>
+            </li>
             <li class="sub-menu dcjq-parent-li">
                 <a href="javascript:;" class="dcjq-parent">
                     <i class="fa fa-book"></i>

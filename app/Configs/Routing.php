@@ -7,6 +7,7 @@ use Controllers\DashBoardController;
 use Controllers\ProductController;
 use Controllers\AccountController;
 use Controllers\UserController;
+use Controllers\ProgramController;
 
 class Routing {
     protected  $baseController;
@@ -27,6 +28,9 @@ class Routing {
                     break;
                 case "product":
                     $this->baseController = new ProductController();
+                    break;
+                case "program":
+                    $this->baseController = new ProgramController();
                     break;
                 case "dashboard":
                     $this->baseController = new DashBoardController();
