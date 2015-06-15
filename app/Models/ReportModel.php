@@ -22,7 +22,6 @@ class ReportModel extends BaseModel {
         if(!empty($search)){
             $strLike = ' WHERE (`unique_id_ordernumber` like ?)';
         }
-//echo $search;die();
 
         $query="SELECT count(*) AS total FROM `transactions` AS tr JOIN users AS u  ON tr.epi=u.id "." ".$strLike.' ORDER BY `date` desc';
 
@@ -55,7 +54,7 @@ class ReportModel extends BaseModel {
         $this->database->setQuery($querylimit);
         $result = $this->database->loadAllRows($arrSearch);
         
-//echo '<pre>'.print_r($querylimit,true).'</pre>';die();
+        //echo '<pre>'.print_r($querylimit,true).'</pre>';die();
         return $result;
     }
     public function sumCommission()
