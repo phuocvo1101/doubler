@@ -13,6 +13,7 @@
     <!-- Bootstrap core CSS -->
     <link href="public/css/bootstrap.min.css" rel="stylesheet">
     <link href="public/css/bootstrap-reset.css" rel="stylesheet">
+    
     <!--external css-->
     <link href="public/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link href="public/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
@@ -43,6 +44,36 @@
 <div class="top-nav ">
     <!--search & user info start-->
     <ul class="nav pull-right top-menu">
+        {if $typeUser=='admin'}
+
+
+            <li>
+
+                <label><h4>Total Commission:</h4></label>
+
+                <input type="text" readonly="" value="{if isset($sum)}{$sum|round:"2"} €{/if}" />
+
+
+            </li>
+        {/if}
+
+        {if $typeUser!='admin'}
+
+
+                        <li>
+
+                            <label><h4>Total Commission:</h4></label>
+
+                            <input size="10" type="text" readonly="" value="{if isset($sum)}{$sum|round:"2"} €{/if}" />
+
+                            <label><h4>Point:</h4></label>
+
+                            <input size="5" type="text" readonly="" value="{$report->point}" />
+
+
+                        </li>
+
+        {/if}
 
         <li class="dropdown ">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">

@@ -76,7 +76,6 @@ $network = Oara_Factory::createInstance($credentials);
 
 $data = new \Models\GetDataModel();
 $transactions = $data->getData($network,$month);
-
 $report = new \Models\ReportModel();
 $result = $report->insertReport($transactions);
 if($result) {

@@ -36,9 +36,13 @@ class ReportController extends BaseController implements IBaseController{
         $start = (int)$Pagination->start();
 
         $result = $this->model->listReport($start,$limit,0,$search);
-
+       // echo 'pre'.print_r($result,true).'</pre>';die();
         $listPage= $Pagination->listPages($totalPages);
-
+        if($_SESSION['type']=='admin'){
+            $sumCommission= $this->model->sumCommission();
+            $this->template->assign('sum',$sumCommission);
+        }
+        $this->template->assign('typeUser',$_SESSION['type']);
         $this->template->assign('reports',$result);
         $this->template->assign('search',$search);
         $this->template->assign('limit',$limit);
