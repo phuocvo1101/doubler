@@ -20,7 +20,7 @@
                                   <div class="col-xs-6 col-sm-6 placeholder">
                                       <h3 align="left"><span> Reports</span></h3>
                                   </div>
-
+                                  {if $typeUser=='admin'}
                                   <div class=" col-xs-6 col-sm-4">
                                       <div class="input-group">
                                           <input type="text" class="form-control" id="search" name="search" value="{if isset($search)}{$search}{/if}" placeholder="Search Order Number...">
@@ -30,6 +30,7 @@
                                       </div>
 
                                   </div>
+                                  {/if}
 
 
                               </div>
@@ -57,6 +58,7 @@
                                         </th>
                                         <th>Elem Grafico Nome
                                         </th>
+                                        <th>Agency </th>
                                   </tr>
                                   </thead>
                                   <tbody>
@@ -82,12 +84,15 @@
                                                 </td>
                                                 <td>{$item->elem_grafico_name}
                                                 </td>
+                                                <td>{$item->username}
+                                                </td>
                     
                                             </tr>
                                         {/foreach}
                                     {/if}
                     
                                     </tbody>
+                                    {if $typeUser=='admin'}
                                     <tr>
                                         <td colspan="5" align="right">
                     
@@ -114,6 +119,7 @@
                     
                                         </td>
                                     </tr>
+                                    {/if}
                               </table>
                               </section>
                           </div>

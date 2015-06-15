@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Models\BaseModel;
 
 class BaseController {
     protected  $template;
@@ -9,6 +10,7 @@ class BaseController {
     {
         global $smarty;
         $this->template= $smarty;
+        
         if(!$this->checkLogin()) {
             if(isset($_REQUEST['controller']) && $_REQUEST['controller']=='user' && isset($_REQUEST['controller']) && $_REQUEST['action']=='login') {
                 return;
@@ -22,6 +24,7 @@ class BaseController {
                 $this->redirect();
             }
         }
+
     }
 
     public function redirect($controller='',$action='',$params=array())
@@ -34,11 +37,10 @@ class BaseController {
         foreach($params as $key=>$item) {
             $url.='&'.$key.'='.$item;
         }
-
+       
         header('location:'.$url);
         exit();
     }
-
     public function checkLogin()
     {
         if(!isset($_SESSION['user_id'])) {

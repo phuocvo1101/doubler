@@ -1,7 +1,7 @@
 <?php
 session_start();
 use Configs\Routing;
-
+use Models\BaseModel;
 define('APPLICATION',dirname(__FILE__));
 define('APPLICATION_VIEW',APPLICATION.'/app/Views/');
 define('PATH_CACHE',APPLICATION.'/app/caches');
@@ -33,6 +33,19 @@ $smarty->assign('PATH_IMAGES',PATH_IMAGES);
 if(isset($_SESSION['username'])) {
     $smarty->assign('user',$_SESSION['username']);
     $smarty->assign('type',$_SESSION['type']);
+    $smarty->assign('typeUser',$_SESSION['type']);
+    $model= new \Models\BaseModel();
+    if($_SESSION['type']=='admin'){
+        $sum= $model->sumCommissionReport();
+
+    }else{
+        $sum= $model->sumCommissionReport($_SESSION['user_id']);
+        $report= $model->listReportId();
+        $smarty->assign('report',$report);
+    }
+    $smarty->assign('sum',$sum);
+
+
 }
 $smarty->assign('content',$content);
 $smarty->display($layout);
