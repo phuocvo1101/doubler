@@ -16,7 +16,7 @@ class ProgramModel extends BaseModel
         if($search != ""){
             $strsearch= ";q=".$search;
         }
-        $url='http://api.tradedoubler.com/1.0/productFeeds.json'.$strsearch.'?token=BFDFD4A24D6DBD5F9D0B091D9714B5460891B53B';
+        $url='http://api.tradedoubler.com/1.0/productFeeds.json?token=BFDFD4A24D6DBD5F9D0B091D9714B5460891B53B';
         $response = $client->get($url);
         $stream = $response->getBody(true);
         $content = $stream->getContents();
@@ -24,7 +24,7 @@ class ProgramModel extends BaseModel
         $arrProduct = array();
         foreach($feeds['feeds'] as $item)
         {
-            $urlProduct='http://api.tradedoubler.com/1.0/products.json;fid='.$item['feedId'].';limit=1?token=BFDFD4A24D6DBD5F9D0B091D9714B5460891B53B';
+            $urlProduct='http://api.tradedoubler.com/1.0/products.json;fid='.$item['feedId'].$strsearch.';limit=1?token=BFDFD4A24D6DBD5F9D0B091D9714B5460891B53B';
             $response = $client->get($urlProduct);
             $stream = $response->getBody(true);
             $content = $stream->getContents();

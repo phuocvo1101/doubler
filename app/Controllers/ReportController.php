@@ -24,7 +24,6 @@ class ReportController extends BaseController implements IBaseController{
         if (isset($_POST['go'])) {
             $search = $_POST['search'] ? $_POST['search'] : '';
         }
-
         $totalRecord = $this->model->listReport(0,10,1,$search);
 
         $limit = isset($_REQUEST['limit']) ?  $_REQUEST['limit'] : 10;
@@ -42,6 +41,8 @@ class ReportController extends BaseController implements IBaseController{
             $sumCommission= $this->model->sumCommission();
             $this->template->assign('sum',$sumCommission);
         }
+        $users=$this->model->getUsers();
+        $this->template->assign('users',$users);
         $this->template->assign('typeUser',$_SESSION['type']);
         $this->template->assign('reports',$result);
         $this->template->assign('search',$search);
