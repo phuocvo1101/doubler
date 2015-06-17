@@ -20,7 +20,7 @@
                                   <div class="col-xs-6 col-sm-6 placeholder">
                                       <h3 align="left"><span> Reports</span></h3>
                                   </div>
-                                  {if $typeUser=='admin'}
+
                                   <div class=" col-xs-6 col-sm-4">
                                       <div class="input-group">
                                           <input type="text" class="form-control" id="search" name="search" value="{if isset($search)}{$search}{/if}" placeholder="Search Order Number...">
@@ -30,7 +30,7 @@
                                       </div>
 
                                   </div>
-                                  {/if}
+
 
 
                               </div>
@@ -84,7 +84,13 @@
                                                 </td>
                                                 <td>{$item->elem_grafico_name}
                                                 </td>
-                                                <td>{$item->username}
+                                                <td>
+                                                    {foreach $users as $key=>$user}
+                                                        {if $user->id==$item->epi}
+                                                            {$user->username}
+                                                        {/if}
+                                                    {/foreach}
+
                                                 </td>
                     
                                             </tr>

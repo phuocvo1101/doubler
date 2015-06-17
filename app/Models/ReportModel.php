@@ -20,24 +20,24 @@ class ReportModel extends BaseModel {
         $arrSearch=array();
         $strLike = '';
         if(!empty($search)){
-            $strLike = ' WHERE (`unique_id_ordernumber` like ?)';
+            $strLike = ' WHERE `unique_id_ordernumber` like ?';
         }
 
-        $query="SELECT count(*) AS total FROM `transactions` AS tr JOIN users AS u  ON tr.epi=u.id "." ".$strLike.' ORDER BY `date` desc';
-
         if($_SESSION['type']!='admin'){
-            $querylimit="SELECT * FROM transactions AS tr JOIN users AS u  ON tr.epi=u.id WHERE u.`id`=?";
+            $querylimit="SELECT * FROM transactions AS tr JOIN users AS u  ON tr.epi=u.id".$strLike." AND u.`id`=?";
+            $query="SELECT count(*) AS total FROM `transactions` AS tr JOIN users AS u  ON tr.epi=u.id "." ".$strLike.' ORDER BY `date` desc';
         }else{
-            $querylimit = "SELECT * FROM `transactions` AS tr JOIN users AS u  ON tr.epi=u.`id` "." ".$strLike.' ORDER BY `date` desc  LIMIT ?, ?';
+            $querylimit = "SELECT * FROM `transactions`".$strLike.' ORDER BY `date` desc  LIMIT ?, ?';
+            $query="SELECT count(*) AS total FROM `transactions`  ".$strLike.' ORDER BY `date` desc';
         }
 
         //echo $query;die();
         if(!empty($search)) {     
-            $arrSearch[] = array('%'.$search.'%',\PDO::PARAM_STR);
+            $arrSearch[] = array('%'.trim($search).'%',\PDO::PARAM_STR);
         }
 
-
         if($count==1) {
+
             $this->database->setQuery($query);
             $total = $this->database->loadRow($arrSearch);
             return $total->total;
@@ -63,6 +63,16 @@ class ReportModel extends BaseModel {
         $this->database->setQuery($querySum);
         $result= $this->database->loadRow();
         return $result->TotalCommission;
+    }
+    public  function getUsers()
+    {
+        $query= 'SELECT * FROM `users`';
+        $this->database->setQuery($query);
+        $result=$this->database->loadAllRows();
+        if(!$result){
+            return false;
+        }
+        return $result;
     }
     public function getUserId($id)
     {

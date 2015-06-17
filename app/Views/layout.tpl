@@ -68,7 +68,7 @@
 
                             <label><h4>Point:</h4></label>
 
-                            <input size="5" type="text" readonly="" value="{$report->point}" />
+                            <input size="5" type="text" readonly="" value="{if $report->point > 0}{$report->point}{else}0{/if}" />
 
 
                         </li>
