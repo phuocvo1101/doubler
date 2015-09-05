@@ -55,6 +55,23 @@ class RestfulMethods extends ApiMethods implements IMethods
 
         return false;
     }
+    
+    public function getAllProducts($parameter = array())
+    {
+        $resource = array('products');
+        
+        
+        $this->setRestfulAction(GET);
+        $this->setSecureApiCall(false);
+        $result = $this->doRestfulRequest($resource, $parameter);
+        
+        if ( $result )
+        {
+            return $result;
+        }
+        
+        return false;
+    }
 
 
 
@@ -1406,7 +1423,25 @@ class RestfulMethods extends ApiMethods implements IMethods
 
         return false;
     }
-
+    
+    public function getAllPrograms($params = array())
+    {
+        $resource = array('programs');
+        
+        
+       
+        $this->setRestfulAction(GET);
+        $this->setSecureApiCall(false);
+        
+        $result = $this->doRestfulRequest($resource,$params);
+        
+        if ( $result )
+        {
+            return $result;
+        }
+        
+        return false;
+    }
 
 
     /**

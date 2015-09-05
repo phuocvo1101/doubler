@@ -46,9 +46,9 @@ class Oara_Network_Publisher_Zanox extends Oara_Network {
 	 * @param $affiliateWindow
 	 * @return Oara_Network_Publisher_Zn_Api
 	 */
-	public function __construct($credentials) {
+	public function __construct($credentials,$protocol = PROTOCOL_SOAP) {
 
-		$api = ApiClient::factory(PROTOCOL_SOAP, VERSION_2011_03_01);
+		$api = ApiClient::factory($protocol, VERSION_2011_03_01);
 
 		$connectId = $credentials['connectId'];
 		$secretKey = $credentials['secretKey'];
@@ -67,6 +67,7 @@ class Oara_Network_Publisher_Zanox extends Oara_Network {
 	public function checkConnection() {
 		$connection = true;
 		try {
+		    
 			$profile = $this->_apiClient->getProfile();
 		} catch (Exception $e) {
 			$connection = false;
@@ -143,7 +144,7 @@ class Oara_Network_Publisher_Zanox extends Oara_Network {
 					gc_collect_cycles();
 				}
 			}
-
+			
 			foreach ($totalAuxTransactions as $transaction) {
 
 				if (in_array($transaction->program->id, $merchantList)) {
@@ -176,9 +177,15 @@ class Oara_Network_Publisher_Zanox extends Oara_Network {
 							}
 						}
 					}
-					$obj['unique_id'] = $transaction->id;
-					$obj['commission'] = $transaction->commission;
 					$transactionDate = new Zend_Date($transaction->trackingDate, "yyyy-MM-dd HH:mm:ss");
+					$timeLastModified =  new Zend_Date($transaction->modifiedDate, "yyyy-MM-dd HH:mm:ss");
+					$obj['evento_name'] = $transaction->trackingCategory->_;
+					$obj['time_last_modified'] =  $timeLastModified->toString("yyyy-MM-dd HH:mm:ss");
+					$obj['time_of_visit'] =  $transactionDate->toString("yyyy-MM-dd HH:mm:ss");
+					$obj['programma_name'] = $transaction->program->_;
+					$obj['unique_id_ordernumber'] = $transaction->id;
+					$obj['commission'] = $transaction->commission;
+					
 					$obj['date'] = $transactionDate->toString("yyyy-MM-dd HH:mm:ss");
 					$obj['merchantId'] = $transaction->program->id;
 					$totalTransactions[] = $obj;
@@ -235,6 +242,30 @@ class Oara_Network_Publisher_Zanox extends Oara_Network {
 		}
 		return $transactionList;
 		
+	}
+	
+	public function getProducts($parameters = array())
+	{
+	    $productList = array();
+	    try{
+	        $productList = $this->_apiClient->getAllProducts($parameters);
+	        return $productList;
+	    } catch (Exception $e){
+	      echo '<pre>'.print_r($e->getMessage(),true).'</pre>';
+	      die();
+	        	
+	    }
+	}
+	
+	public function getPrograms($params = array())
+	{
+	   try {
+	      
+	       return $this->_apiClient->getAllPrograms($params);
+	   } catch (Exception $e) {
+	       echo '<pre>'.print_r($e,true).'</pre>';
+	       die();
+	   }
 	}
 
 	/**

@@ -35,13 +35,18 @@ class Oara_Factory {
 	 * @return Oara_Network
 	 * @throws Exception
 	 */
-	public static function createInstance($credentials) {
+	public static function createInstance($credentials,$protocol = '') {
 
 		$affiliate = null;
 		$networkName = $credentials['networkName'];
 		try {
 			$networkClassName = 'Oara_Network_'.$credentials["type"].'_'.$networkName;
-			$affiliate = new $networkClassName($credentials);
+			if($protocol!=''){
+			    $affiliate = new $networkClassName($credentials,$protocol);
+			} else{
+			    $affiliate = new $networkClassName($credentials);
+			}
+			
 		} catch (Exception $e) {
 			throw new Exception('No Network Available '.$networkName);
 		}
