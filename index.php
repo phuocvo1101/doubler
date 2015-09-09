@@ -2,9 +2,9 @@
 session_start();
 use Configs\Routing;
 use Models\BaseModel;
-define('APPLICATION',dirname(__FILE__));
-define('APPLICATION_VIEW',APPLICATION.'/app/Views/');
-define('PATH_CACHE',APPLICATION.'/app/caches');
+define('APPLICATION_DIRECTORY',dirname(__FILE__));
+define('APPLICATION_VIEW',APPLICATION_DIRECTORY.'/app/Views/');
+define('PATH_CACHE',APPLICATION_DIRECTORY.'/app/caches');
 
 define('PATH_SERVERNAME','http://'.$_SERVER['SERVER_NAME'].'/');
 define('PATH_SERVER',$_SERVER['DOCUMENT_ROOT'].'/');

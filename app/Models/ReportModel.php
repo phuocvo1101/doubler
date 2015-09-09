@@ -106,10 +106,10 @@ class ReportModel extends BaseModel {
         return true;
     }
 
-    public function insertReport($transations)
+    public function insertReport($transations,$type='tradedoubler')
     {
         foreach($transations as $item) {
-            $epi= $item['epi'];     
+            $epi= isset($item['epi']) ? $item['epi']: '';     
             if(!empty($epi)) {
                 $user= $this->getUserId((int)$epi);
                 if($user){
@@ -121,25 +121,26 @@ class ReportModel extends BaseModel {
             }
             $query = 'INSERT INTO `transactions`(merchantId,date,unique_id_ordernumber,programma_name,programa_prepayment_status,
                       time_of_visit,time_in_session,time_last_modified,evento_name,reason,site_name,elem_grafico_name,status,
-                      amount,commission,custom_id,epi) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+                      amount,commission,custom_id,epi,type) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
             $arrData = array(
-                array($item['merchantId'],\PDO::PARAM_INT),
-                array($item['date'],\PDO::PARAM_STR),
-                array($item['unique_id_ordernumber'],\PDO::PARAM_STR),
-                array($item['programma_name'],\PDO::PARAM_STR),
-                array($item['programa_prepayment_status'],\PDO::PARAM_STR),
-                array($item['time_of_visit'],\PDO::PARAM_STR),
-                array($item['time_in_session'],\PDO::PARAM_STR),
-                array($item['time_last_modified'],\PDO::PARAM_STR),
-                array($item['evento_name'],\PDO::PARAM_STR),
-                array($item['reason'],\PDO::PARAM_STR),
-                array($item['site_name'],\PDO::PARAM_STR),
-                array($item['elem_grafico_name'],\PDO::PARAM_STR),
-                array($item['status'],\PDO::PARAM_STR),
-                array($item['amount'],\PDO::PARAM_STR),
-                array($item['commission'],\PDO::PARAM_STR),
-                array($item['custom_id'],\PDO::PARAM_STR),
-                array($epi,\PDO::PARAM_STR)
+                array(isset($item['merchantId']) ? $item['merchantId']: NULL,\PDO::PARAM_INT),
+                array(isset($item['date']) ? $item['date']: '',\PDO::PARAM_STR),
+                array(isset($item['unique_id_ordernumber']) ? $item['unique_id_ordernumber']: '',\PDO::PARAM_STR),
+                array(isset($item['programma_name']) ? $item['programma_name']: '',\PDO::PARAM_STR),
+                array(isset($item['programa_prepayment_status']) ? $item['programa_prepayment_status']: '',\PDO::PARAM_STR),
+                array(isset($item['time_of_visit']) ? $item['time_of_visit']: '',\PDO::PARAM_STR),
+                array(isset($item['time_in_session']) ? $item['time_in_session']: '',\PDO::PARAM_STR),
+                array(isset($item['time_last_modified']) ? $item['time_last_modified']: '',\PDO::PARAM_STR),
+                array(isset($item['evento_name']) ? $item['evento_name']: '',\PDO::PARAM_STR),
+                array(isset($item['reason']) ? $item['reason']: '',\PDO::PARAM_STR),
+                array(isset($item['site_name']) ? $item['site_name']: '',\PDO::PARAM_STR),
+                array(isset($item['elem_grafico_name']) ? $item['elem_grafico_name']: '',\PDO::PARAM_STR),
+                array(isset($item['status']) ? $item['status']: '',\PDO::PARAM_STR),
+                array(isset($item['amount']) ? $item['amount']: '',\PDO::PARAM_STR),
+                array(isset($item['commission']) ? $item['commission']: '',\PDO::PARAM_STR),
+                array(isset($item['custom_id']) ? $item['custom_id']: '',\PDO::PARAM_STR),
+                array($epi,\PDO::PARAM_STR),
+                array($type,\PDO::PARAM_STR)
             );
             $this->database->setQuery($query);
             $this->database->execute($arrData);

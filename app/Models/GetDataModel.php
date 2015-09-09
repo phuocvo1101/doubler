@@ -10,6 +10,31 @@ namespace Models;
 
 
 class GetDataModel {
+    public function getProducts($network,$parameters = array())
+    {
+        try {
+            if (!$network->checkConnection()) {
+                die('Can not connect');
+            }
+            
+            $productList = $network->getProducts($parameters);
+            return $productList;
+        } catch (Exception $e) {
+            echo $e->getMessage();die();
+        }
+       
+    }
+    
+    public function getPrograms($network,$params = array())
+    {
+        if (!$network->checkConnection()) {
+            die('Can not connect');
+        }
+  
+        $productList = $network->getPrograms($params);
+        return $productList;
+    }
+    
     /**
      * Test the network provided
      * @param $affiliateNetwork

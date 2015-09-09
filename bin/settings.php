@@ -27,7 +27,7 @@ ini_set('memory_limit', '256M');
 error_reporting(E_ALL | E_STRICT);
 //Defining the Global variables 
 define('BI_PATH_BASE', rtrim(realpath(dirname(__FILE__)), DIRECTORY_SEPARATOR));
-define('DS', DIRECTORY_SEPARATOR);
+define('DS_DIRECTORY', DIRECTORY_SEPARATOR);
 define('COOKIES_BASE_DIR', realpath ( dirname ( __FILE__ ) ) . DIRECTORY_SEPARATOR."Oara".DIRECTORY_SEPARATOR."data".DIRECTORY_SEPARATOR."curl");
 
 //set up default timezone
@@ -37,10 +37,10 @@ umask(0002);
 
 //Adding the credentials ini into the Zend Registry
 //Allow for external credentials for git deployment
-if (is_file(BI_PATH_BASE.DS.'credentials.ini')) {
+if (is_file(BI_PATH_BASE.DS_DIRECTORY.'credentials.ini')) {
 
-	$config = new Zend_Config_Ini(BI_PATH_BASE.DS.'credentials.ini', 'production');
+	$config = new Zend_Config_Ini(BI_PATH_BASE.DS_DIRECTORY.'credentials.ini', 'production');
 } else {
-	$config = new Zend_Config_Ini(BI_PATH_BASE.DS.'credentials.ini', 'production');
+	$config = new Zend_Config_Ini(BI_PATH_BASE.DS_DIRECTORY.'credentials.ini', 'production');
 }
 Zend_Registry::getInstance()->set('credentialsIni', $config);
